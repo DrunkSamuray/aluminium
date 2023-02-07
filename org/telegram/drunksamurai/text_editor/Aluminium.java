@@ -48,7 +48,7 @@ public class Aluminium extends JFrame {
         setTitle("Aluminium Text Editor");
         setLocationRelativeTo(null);
         
-        URL imgUrl = getClass().getResource("/text_editor_icon.jpg");
+        URL imgUrl = getClass().getResource("/res/img/text_editor_icon.png");
         System.out.println(imgUrl.toString());
         ImageIcon icon = new ImageIcon(imgUrl);
         setIconImage(icon.getImage());

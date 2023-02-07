@@ -1,16 +1,23 @@
 
 package org.telegram.drunksamurai.text_editor;
 
+import java.awt.Desktop;
 import java.awt.FileDialog;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
 /**
@@ -96,10 +103,6 @@ class ExitAction implements ActionListener {
 // View menu actions
 
 class ChangeFontAction implements ActionListener {
-
-    public ChangeFontAction(Font font) {
-        Actions.font = font;
-    }
     
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -113,4 +116,78 @@ class ChangeFontAction implements ActionListener {
             System.out.println("New font was not selected.");
         }
     }
+}
+
+// Help menu actions
+
+class AboutAction implements ActionListener {
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        
+        JPanel panel = new JPanel();
+        //panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+                
+        String text = "<html> <br/>  This is a simple text editor <br/> written entirely in Java. <br/><br/>" +
+                "License: MIT<br/>";                
+ 
+        JLabel label = new JLabel(text);
+        label.setFont(new Font("Consolas", 0, 16));
+        
+        JLabel label2 = new JLabel("Github: click me!");
+        label2.setFont(new Font("Consolas", 0, 16));
+        
+        label2.addMouseListener(new VisitGitHubAction());
+        
+        panel.add(label);
+        panel.add(label2);
+        
+        JDialog jd = new JDialog(Actions.frame, true);
+        jd.setIconImage(Actions.frame.getIconImage());
+        jd.setTitle("About");
+        jd.setSize(300, 170);
+        jd.setLocationRelativeTo(null);
+        jd.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        jd.setResizable(false);
+        jd.add(panel);
+        jd.setVisible(true);
+        
+        //about.setVisible(true);
+    }
+    
+    
+    
+    
+}
+
+class VisitGitHubAction implements MouseListener {
+    @Override
+    public void mouseClicked(MouseEvent e) {
+        try {
+         
+            Desktop.getDesktop().browse(new URI("https://github.com"));
+         
+        } catch (IOException | URISyntaxException e1) {
+            e1.printStackTrace();
+        }
+    }
+    
+    @Override
+    public void mouseExited(MouseEvent e) {
+        
+    }
+    
+    @Override
+    public void mouseEntered(MouseEvent e) {
+        
+    }
+    
+    @Override
+    public void mouseReleased(MouseEvent e) {
+        
+    }
+    
+    @Override
+    public void mousePressed(MouseEvent e) {
+        
+    } 
 }

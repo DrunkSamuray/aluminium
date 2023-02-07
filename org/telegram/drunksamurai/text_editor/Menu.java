@@ -20,6 +20,9 @@ public class Menu {
     static JMenu menuView;
     static JMenuItem mChangeFont;
     
+    static JMenu menuHelp;
+    static JMenuItem mAbout;
+    
     static void addBar() {
         // add menu bar itself
         bar = new JMenuBar();
@@ -46,13 +49,23 @@ public class Menu {
         
         mChangeFont = new JMenuItem("Change font...");
         
-        Font font = new Font("Consolas", 0, 16);
-        
-        mChangeFont.addActionListener(new ChangeFontAction(font));
+        mChangeFont.addActionListener(new ChangeFontAction());
         
         menuView.add(mChangeFont);
         
         bar.add(menuView);
+        
+        // add Help menu
+        menuHelp = new JMenu("Help");
+        
+        mAbout = new JMenuItem("About...");
+        
+        mAbout.addActionListener(new AboutAction());
+        
+        menuHelp.add(mAbout);
+        
+        bar.add(menuHelp);
+        
         
         Actions.frame.setJMenuBar(bar);
         
