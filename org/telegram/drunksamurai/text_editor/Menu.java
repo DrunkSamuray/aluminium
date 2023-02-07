@@ -19,6 +19,7 @@ public class Menu {
     
     static JMenu menuView;
     static JMenuItem mChangeFont;
+    static JMenuItem mSwitchDarkTheme;
     
     static JMenu menuHelp;
     static JMenuItem mAbout;
@@ -48,10 +49,13 @@ public class Menu {
         menuView = new JMenu("View");
         
         mChangeFont = new JMenuItem("Change font...");
+        mSwitchDarkTheme = new JMenuItem("Switch to dark/light theme");
         
         mChangeFont.addActionListener(new ChangeFontAction());
+        mSwitchDarkTheme.addActionListener(new SwitchThemeAction());
         
         menuView.add(mChangeFont);
+        menuView.add(mSwitchDarkTheme);
         
         bar.add(menuView);
         

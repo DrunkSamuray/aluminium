@@ -2,6 +2,7 @@
 package org.telegram.drunksamurai.text_editor;
 
 import java.awt.BorderLayout;
+import java.awt.Font;
 import java.net.URL;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -44,7 +45,7 @@ public class Aluminium extends JFrame {
     
     Aluminium() {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(800, 600); 
+        setSize(600, 800); 
         setTitle("Aluminium Text Editor");
         setLocationRelativeTo(null);
         
@@ -70,6 +71,7 @@ public class Aluminium extends JFrame {
         JPanel panel = new JPanel();
         textArea = new JTextArea();
         Actions.textArea = textArea;
+        Actions.textArea.setFont(new Font("Consolas", 0, 12));
         JScrollPane scrollPane = new JScrollPane(textArea);
         
         panel.setLayout(new BorderLayout());

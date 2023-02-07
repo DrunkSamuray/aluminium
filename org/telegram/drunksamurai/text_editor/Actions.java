@@ -1,6 +1,8 @@
 
 package org.telegram.drunksamurai.text_editor;
 
+import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.Desktop;
 import java.awt.FileDialog;
 import java.awt.Font;
@@ -31,6 +33,7 @@ public class Actions {
     static JLabel statusLabel;
     
     static Font font;
+    static boolean isThemeDark = false;
 }
 
 // File menu actions
@@ -118,6 +121,23 @@ class ChangeFontAction implements ActionListener {
     }
 }
 
+class SwitchThemeAction implements ActionListener {
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if (!Actions.isThemeDark) {
+            Actions.textArea.setBackground(Color.DARK_GRAY);
+            Actions.textArea.setForeground(Color.WHITE);
+            Actions.textArea.setCaretColor(Color.WHITE);
+            Actions.isThemeDark = true;
+        } else {
+            Actions.textArea.setBackground(Color.WHITE);
+            Actions.textArea.setForeground(Color.BLACK);
+            Actions.textArea.setCaretColor(Color.BLACK);
+            Actions.isThemeDark = false;
+        }
+    }
+}
+
 // Help menu actions
 
 class AboutAction implements ActionListener {
@@ -128,12 +148,13 @@ class AboutAction implements ActionListener {
         //panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
                 
         String text = "<html> <br/>  This is a simple text editor <br/> written entirely in Java. <br/><br/>" +
-                "License: MIT<br/>";                
+                "License: MIT<br/> </html>";                
  
         JLabel label = new JLabel(text);
         label.setFont(new Font("Consolas", 0, 16));
         
-        JLabel label2 = new JLabel("Github: click me!");
+        JLabel label2 = new JLabel("<html>Github: <a href=\"\">https://github.com</a></html>");
+        label2.setCursor(new Cursor(Cursor.HAND_CURSOR));
         label2.setFont(new Font("Consolas", 0, 16));
         
         label2.addMouseListener(new VisitGitHubAction());
