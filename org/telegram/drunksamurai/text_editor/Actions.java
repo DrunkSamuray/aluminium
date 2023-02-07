@@ -86,6 +86,13 @@ class SaveFileAction implements ActionListener {
     }
 }
 
+class ExitAction implements ActionListener {
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        System.exit(0);
+    }
+}
+
 // View menu actions
 
 class ChangeFontAction implements ActionListener {
@@ -96,6 +103,14 @@ class ChangeFontAction implements ActionListener {
     
     @Override
     public void actionPerformed(ActionEvent e) {
-        Actions.textArea.setFont(Actions.font);
+        JFontChooser fontChooser = new JFontChooser();
+        int result = fontChooser.showDialog(Actions.frame);
+        
+        if (result == JFontChooser.OK_OPTION) {
+            Font font = fontChooser.getSelectedFont();
+            Actions.textArea.setFont(font);
+        } else {
+            System.out.println("New font was not selected.");
+        }
     }
 }

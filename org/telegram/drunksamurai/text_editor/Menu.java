@@ -15,7 +15,7 @@ public class Menu {
     static JMenuBar bar;
     
     static JMenu menuFile;    
-    static JMenuItem mSaveFile, mOpenFile, item3;
+    static JMenuItem mSaveFile, mOpenFile, mExit;
     
     static JMenu menuView;
     static JMenuItem mChangeFont;
@@ -29,14 +29,15 @@ public class Menu {
         
         mSaveFile = new JMenuItem("Save to file...");
         mOpenFile = new JMenuItem("Open file...");
-        item3 = new JMenuItem("Action 3");
+        mExit = new JMenuItem("Exit");
         
         mSaveFile.addActionListener(new SaveFileAction());
         mOpenFile.addActionListener(new OpenFileAction());
+        mExit.addActionListener(new ExitAction());
         
         menuFile.add(mSaveFile);
         menuFile.add(mOpenFile);
-        menuFile.add(item3);
+        menuFile.add(mExit);
         
         bar.add(menuFile);
         

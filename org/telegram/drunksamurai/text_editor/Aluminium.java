@@ -16,8 +16,9 @@ import javax.swing.UnsupportedLookAndFeelException;
 /**
  *
  * @author Jadavin
+ * 
  */
-public class TextEditor extends JFrame {
+public class Aluminium extends JFrame {
     
     JTextArea textArea;
     JLabel pathLabel;
@@ -30,18 +31,18 @@ public class TextEditor extends JFrame {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                TextEditor textEditor = new TextEditor();
-                Actions.frame = textEditor;                
+                Aluminium app = new Aluminium();
+                Actions.frame = app;                
                 
-                textEditor.buildTextArea();
+                app.buildTextArea();
                 Menu.addBar();
                 
-                textEditor.setVisible(true);
+                app.setVisible(true);
             }
         });        
     }
     
-    TextEditor() {
+    Aluminium() {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(800, 600); 
         setTitle("Aluminium Text Editor");
