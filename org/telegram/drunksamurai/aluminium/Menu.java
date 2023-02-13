@@ -1,5 +1,5 @@
 
-package org.telegram.drunksamurai.text_editor;
+package org.telegram.drunksamurai.aluminium;
 
 import java.awt.Font;
 import javax.swing.JMenu;

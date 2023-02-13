@@ -1,5 +1,5 @@
 
-package org.telegram.drunksamurai.text_editor;
+package org.telegram.drunksamurai.aluminium;
 
 /************************************************************
  * Copyright 2004-2005,2007-2008 Masahiko SAWAI All Rights Reserved. 
